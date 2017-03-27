@@ -1,0 +1,381 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Your Personal Treatment Planner</title>
+<style type="text/css">
+.listItem {
+    padding: 0 0 0 15px;
+    background: url(bullet.png) no-repeat left 5px;
+    display: none;
+    font-weight: normal;
+    background-size: 3%;
+}
+.built-plant {
+    color: #fff;
+    background: #7accc8;
+    border: none;
+    padding: 8px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    margin-top: 40px;
+    text-decoration: none;
+}
+#treatmentNav { 
+    padding: 0 0 40px; 
+    width: 326px; 
+    background: #fff; 
+    float: right; 
+    position: relative; 
+    border: 8px solid #7accc8;
+    padding: 5px;
+    min-height: 320px;
+}
+#treatmentNav h1, .area-title {
+    color: #333132;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.li-title, .listItem, #interestNav label {
+    text-transform: capitalize;
+    color: #333132;
+    font-size: 13px;
+}
+.li-title {
+    font-weight: bold;
+    background: none;
+    margin-top: 8px;
+}
+#treatmentNav ul {
+    line-height: 20px;
+    padding: 0;
+    list-style-type: none;
+    max-height: 1160px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#interestNav {
+    padding: 10px;
+    width: 330px;
+    background: #7accc8;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    float: left;
+    line-height: 24px;
+}
+h1.area-title {
+    padding: 10px 0px;
+}
+#clearForm {
+    margin-top: 20px;
+    float: left;
+    text-decoration: none;
+    background: #fff;
+    padding: 8px 10px;
+    border-top-right-radius: 15px;
+    color: #333132;
+    font-weight: bold;
+    font-size: 14px;
+}
+#clearForm:hover{
+    color: #7accc8;
+}
+#treatmentAreas { 
+    width: 978px; 
+    height: 1345px; 
+    background: url("women.jpg") no-repeat left top; 
+    position: relative; 
+    margin: 0 auto;
+}
+
+* { margin: 0; padding: 0; }
+body { margin: 0; padding: 0; font-size: 16px; font-family: Arial,Helvetica Neue,Helvetica,sans-serif; }
+.clear { clear: both; }
+
+#gender { height: 69px; }
+#gender a { width: 100px; display: block; overflow: hidden; float: left; }
+#gender a:hover, #gender a.on { text-indent: -100px; }
+#interestNav form { margin: 0 9px 20px; font-size: 16px; line-height: 30px; }
+#interestNav input { padding: 0; margin: 0 9px 0 0; vertical-align: middle; border: none; border-image-outset: none; outline: 1px solid #000; width: 15px; height: 15px; background-color: #fff; -webkit-appearance: none; -moz-appearance: none; -o-appearance:none; border-top-style: none !important;border-right-style: none !important;border-bottom-style: none !important;border-left-style: none !important; background: url(checkbox-background.gif) no-repeat left bottom; }
+#interestNav input:checked { -moz-appearance: none; background: url(checkbox-background-checked.gif) no-repeat left bottom; }
+#g1Treatment,#g2Treatment,#g3Treatment,#g4Treatment,#g5Treatment,#g6Treatment,#g7Treatment,#g8Treatment,#g9Treatment,#g10Treatment,#g11Treatment,#g12Treatment,#g13Treatment,#g14Treatment,#g15Treatment,#g16Treatment,#g17Treatment,#g18Treatment,#g19Treatment,#g20Treatment {
+    display: block;
+    position: absolute;
+}
+#g1Treatment { left: 357px; top: 410px; width: 42%;}
+#g2Treatment { left: 600px; top: 415px; width: 14%;}
+#g3Treatment { left: 473px; top: 110px; width: 19%;}
+#g4Treatment { left: 490px; top: 195px; width: 19%;}
+#g5Treatment { left: 448px; top: 173px; width: 21%;}
+#g6Treatment { left: 503px; top: 134px; width: 17%;}
+#g7Treatment { left: 448px; top: 7px; width: 39%;}
+#g8Treatment { left: 600px; top: 342px; width: 20%;}
+#g9Treatment { left: 438px; top: 158px; width: 24%;}
+#g10Treatment { left: 460px; top: 127px; width: 22%;}
+#g11Treatment { left: 490px; top: 142px; width: 19%;}
+#g12Treatment { left: 440px; top: 185px; width: 26%;}
+#g13Treatment { left: 460px; top: 148px; width: 21%;}
+#g14Treatment { left: 498px; top: 180px; width: 17%;}
+#g15Treatment { left: 572px; top: 95px; width: 8%;}
+#g16Treatment { left: 450px; top: 127px; width: 20%;}
+#g17Treatment { left: 470px; top: 128px; width: 20%;}
+#g18Treatment { left: 490px; top: 83px; width: 18%;}
+#g19Treatment { left: 511px; top: 144px; width: 16%;}
+#g20Treatment { left: 439px; top: 139px; width: 24%;}
+
+
+</style>
+<script src="jquery.min.js"></script>
+<script src="dropdown.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery.fancybox-1.3.0.css" media="screen">
+<script src="jquery.fancybox-1.3.0.pack.js"></script>
+
+</head>
+
+<body>
+	<div id="treatmentAreas" style="background-image: url('men.jpg');">
+    	<div id="interests">
+            <script type="text/javascript">
+                var imgList = '';
+                for (i = 1; i <= 20; i++) {
+                    imgList += '<img src=g' + i + '.png id=g' + i + 'Treatment' + '>';
+                }
+                document.write(imgList);
+            </script>
+        </div>
+    	<div id="gender">
+        	<img src="interestNav-i-am.png" alt="I Am" style="float: left;">
+    		<a id="female" href="#" class=""><img src="button-female.png" alt="Female"></a><a id="male" href="#" class="on"><img src="button-male.png" alt="Male"></a>
+            <div class="clear"></div>
+        </div>
+
+        
+	    <div id="interestNav">
+            <form method="" name="bodyForm" id="bodyForm">
+        	    <h1 class="area-title">Area(s) of Interest </h1>
+                <input type="checkbox" name="interest" value="g1" id="g1"><label for="g1">Stubbon Fat Bulge/Non-surgical Body Contouring</label><br>
+                <input type="checkbox" name="interest" value="g2" id="g2"><label for="g2">Stretch Marks</label><br>
+                <input type="checkbox" name="interest" value="g3" id="g3"><label for="g3">Small nose bridge/Uneven Nose Shape</label><br>
+                <input type="checkbox" name="interest" value="g4" id="g4"><label for="g4">Sagging Skin</label><br>
+                <input type="checkbox" name="interest" value="g5" id="g5"><label for="g5">Pigmentation/Melasma/Freckles/Sun Spots</label><br>
+                <input type="checkbox" name="interest" value="g6" id="g6"><label for="g6">Maintaining Healthy and Younger Skin</label><br>
+                <input type="checkbox" name="interest" value="g7" id="g7"><label for="g7">Lines and Wrinkles</label><br>
+                <input type="checkbox" name="interest" value="g8" id="g8"><label for="g8">Leg Veins</label><br>
+                <input type="checkbox" name="interest" value="g9" id="g9"><label for="g9">Large Pores</label><br>
+                <input type="checkbox" name="interest" value="g10" id="g10"><label for="g10">Facial Volume Loss/Loss of Facial Contour</label><br>
+                <input type="checkbox" name="interest" value="g11" id="g11"><label for="g11">Facial Spider Veins/Broken Capillaries/Rosacea</label><br>
+                <input type="checkbox" name="interest" value="g12" id="g12"><label for="g12">Facial Slimming/ Bruxism</label><br>
+                <input type="checkbox" name="interest" value="g13" id="g13"><label for="g13">Facial hairs/Underarms/Bikini/Others</label><br>
+                <input type="checkbox" name="interest" value="g14" id="g14"><label for="g14">Facial and Body Resurfacing</label><br>
+                <input type="checkbox" name="interest" value="g15" id="g15"><label for="g15">Excessive Sweating</label><br>
+                <input type="checkbox" name="interest" value="g16" id="g16"><label for="g16">Eyebags and Dark Undereye Circles</label><br>
+                <input type="checkbox" name="interest" value="g17" id="g17"><label for="g17">Cheek, Nose and Lip Enhancement</label><br>
+                <input type="checkbox" name="interest" value="g18" id="g18"><label for="g18">Aging Skin</label><br>
+                <input type="checkbox" name="interest" value="g19" id="g19"><label for="g19">Active Acne</label><br>
+                <input type="checkbox" name="interest" value="g20" id="g20"><label for="g20">Acne Scarring</label><br>
+            
+            <a id="clearForm" href="#">Clear Form Now</a>
+            </form>
+        </div>
+        <div id="treatmentNav" style="display: block;">
+        	<h1>RECOMMENDED TREATMENTS</h1>
+        	<ul>
+                <li class="listItem g1li li-title">Stubbon Fat Bulge/Non-surgical Body Contouring</li>
+                <li class="listItem g1li">CoolSculpting</li>
+                <li class="listItem g1li">Exilis Skin Tightening</li>
+                <li class="listItem g1li">Vanquish</li>
+
+                <li class="listItem g2li li-title">Stretch Marks</li>
+                <li class="listItem g2li">Fractional Resurfacing</li>
+                <li class="listItem g2li">Micro Skin Needling</li>
+                <li class="listItem g2li">Platelet Enhanced Plasma Therapy</li>
+
+                <li class="listItem g3li li-title">Small nose bridge/Uneven Nose Shape</li>
+                <li class="listItem g3li">Collagen Volumiser - R</li>
+                <li class="listItem g3li">Wrinkle Filler</li>
+
+                <li class="listItem g4li li-title">Sagging Skin</li>
+                <li class="listItem g4li">Exilis Skin Tightening</li> 
+                <li class="listItem g4li">Ultherapy</li> 
+
+                <li class="listItem g5li li-title">Pigmentation/Melasma/Freckles/Sun Spots</li>
+                <li class="listItem g5li">Aspect Dr Skincare</li>
+                <li class="listItem g5li">Chemical/Facial Peels</li>
+                <li class="listItem g5li">Fractional Resurfacing</li>
+                <li class="listItem g5li">IPL/BBLTM Treatment</li>
+                <li class="listItem g5li">ZO Medical Skincare</li>
+
+                <li class="listItem g6li li-title">Maintaining Healthy and Younger Skin</li>
+                <li class="listItem g6li">Aspect Dr Skincare</li>
+                <li class="listItem g6li">Chemical Peels</li>
+                <li class="listItem g6li">IPL/BBLTM Photomodulation</li>
+                <li class="listItem g6li">Vibro Microdermabrasion</li>
+                <li class="listItem g6li">ZO Medical Skincare</li>
+
+                <li class="listItem g7li li-title">Lines and Wrinkles</li>
+                <li class="listItem g7li">Aspect Dr Skincare</li> 
+                <li class="listItem g7li">BBLTM Photomodulation</li> 
+                <li class="listItem g7li">Collagen Volumisers - R or S</li> 
+                <li class="listItem g7li">Fractional Resurfacing</li> 
+                <li class="listItem g7li">Micro Skin Needling</li> 
+                <li class="listItem g7li">Platelet Enriced Plasma Therapy</li> 
+                <li class="listItem g7li">Vibro Microdermabrasion</li> 
+                <li class="listItem g7li">Wrinkle Fillers</li> 
+                <li class="listItem g7li">ZO Medical Skincare</li> 
+
+                <li class="listItem g8li li-title">Leg Veins</li>
+                <li class="listItem g8li">Sclerotherapy</li>
+
+                <li class="listItem g9li li-title">Large Pores</li>
+                <li class="listItem g9li">Aspect Dr Skincare</li>
+                <li class="listItem g9li">Fractional Resurfacing</li>
+                <li class="listItem g9li">Vibro Microdermabrasion</li>
+                <li class="listItem g9li">ZO Medical Skincare</li>
+
+                <li class="listItem g10li li-title">Facial Volume Loss/Loss of Facial Contour</li>
+                <li class="listItem g10li">Collagen Volumiser - R or S</li>
+                <li class="listItem g10li">Wrinkle Fillers</li>
+
+                <li class="listItem g11li li-title">Facial Spider Veins/Broken Capillaries/Rosacea</li>
+                <li class="listItem g11li">Aspect Dr Skincare</li>
+                <li class="listItem g11li">IPL / BBLTM Vascular</li>
+                <li class="listItem g11li">ZO Skincare </li>
+
+                <li class="listItem g12li li-title">Facial Slimming/ Bruxism</li>
+                <li class="listItem g12li">Exilis Skin Tightening</li>
+                <li class="listItem g12li">Ultherapy</li>
+                <li class="listItem g12li">Wrinkle Relaxer B </li>
+
+                <li class="listItem g13li li-title">Facial hairs/Underarms/Bikini/Others</li>
+                <li class="listItem g13li">IPL Hair Removal</li>
+
+                <li class="listItem g14li li-title">Facial and Body Resurfacing</li>
+                <li class="listItem g14li">Chemical Peels</li>
+                <li class="listItem g14li">Fractional Resurfacing</li>
+
+                <li class="listItem g15li li-title">Excessive Sweating</li>
+                <li class="listItem g15li">Wrinkle Relaxer</li>
+
+                <li class="listItem g16li li-title">Eyebags and Dark Undereye Circles</li>
+                <li class="listItem g16li">Exilis Skin Tightening</li>
+                <li class="listItem g16li">Fillers</li>
+                <li class="listItem g16li">Fractional Resurfacing</li>
+                <li class="listItem g16li">Platelet Enriched Plasma Therapy</li>
+                <li class="listItem g16li">Ultherapy</li> 
+                <li class="listItem g16li">ZO Medical Skincare Products</li>
+
+                <li class="listItem g17li li-title">Cheek, Nose and Lip Enhancement</li>
+                <li class="listItem g17li">Wrinkle Fillers</li>
+
+                <li class="listItem g18li li-title">Aging Skin</li>
+                <li class="listItem g18li">Aspect Dr Skincare</li> 
+                <li class="listItem g18li">BBLTM Photomodulation</li>
+                <li class="listItem g18li">Collagen Volumisers - S or R</li>
+                <li class="listItem g18li">Exilis Skin Tightening</li>
+                <li class="listItem g18li">Fractional Resurfacing</li>
+                <li class="listItem g18li">Micro Skin Needling</li>
+                <li class="listItem g18li">Platelet Enriched Plasma Therapy</li>
+                <li class="listItem g18li">Vibro Microdermabrasion</li>
+                <li class="listItem g18li">Wrinkle Fillers</li>
+                <li class="listItem g18li">Wrinkled Relaxers</li>
+                <li class="listItem g18li">ZO Medical Skincare</li>
+
+                <li class="listItem g19li li-title">Active Acne</li>
+                <li class="listItem g19li">Aspect Dr</li> 
+                <li class="listItem g19li">Topical Creams and/or Medicationr</li> 
+                <li class="listItem g19li">Vibro Microdermabrasion</li> 
+                <li class="listItem g19li">ZO Medical Skincare</li> 
+
+                <li class="listItem g20li li-title">Acne Scarring</li>
+                <li class="listItem g20li">Chemical Peels</li>
+                <li class="listItem g20li">Fractional Resurfacing</li>
+                <li class="listItem g20li">Micro Skin Needling</li>
+            </ul>
+            <div class="clear"></div>
+            <a class="built-plant"  href="built.html"> BUILD PLAN </a>
+        </div>        
+        <div class="clear"></div>
+    </div>
+    
+    
+    <script>
+			$(document).ready(function() {
+		
+			$('.maleOnly').hide();
+			function changeBackgroundMale() {
+				$('#male').addClass("on");
+				$('#female').removeClass("on");
+				$('#treatmentAreas').css("background-image", "url(men.jpg)");						
+			}
+			function changeBackgroundFemale() {
+				$('#female').addClass("on");
+				$('#male').removeClass("on");
+				$('#treatmentAreas').css("background-image", "url(women.jpg)");					
+			}
+			$("#male").click(changeBackgroundMale).click(countChecked);
+			$("#female").click(changeBackgroundFemale).click(countChecked);
+			
+			$("#clearForm").click(clearForm);
+			function clearForm() {
+				$(':checkbox').attr('checked', false);
+				countChecked();
+			}
+			
+			function countChecked() {
+				$('ul li').hide();
+				$('#treatmentNav').hide();
+                for (var i = 1; i <= 20; i++) {
+                    if ($('#g'+i).attr('checked') == "checked") {
+                        if ($('#g'+i+'Treatment').css('display') == 'none') {
+                            $('#g'+i+'Treatment').fadeIn();
+                        }
+                        $('#treatmentNav').show();
+                        $('.g'+i+'li').show();                  
+                    }
+                    else {
+                        $('#g'+i+'Treatment').fadeOut();
+                    }
+                }		
+			}
+			countChecked();
+			$(":checkbox").click(countChecked);
+		});
+	</script>
+
+    <script>
+    jQuery(document).ready(function() {
+
+        $('input[name="interest"]').change( function(){
+                var base_url = 'built.html';
+                var interests = [];
+                $('input[name="interest"]').each( function() {
+                    var n = $( this ).attr( 'id' );
+                    var c = $( this ).prop( 'checked' );
+                    interests.push( n + '=' + c );
+                });
+                var qstring = '?' + interests.join( '&' );
+                var url = base_url + qstring;
+                $('.built-plant').attr( 'href', url );
+            });
+                
+            $("a.built-plant").fancybox({
+                    'autoScale'         : false,
+                    'overlayOpacity'    : 0.5,
+                    'overlayColor'      : '#fff',
+                    'transitionIn'      : 'fade',
+                    'transitionOut'     : 'fade',
+                    'type'              : 'iframe',
+                    'titleShow'         : false,
+                    'width'             : 858,
+                    'height'            : 500,
+                    'opacity'           : true,
+                    'padding'           : 0
+            });
+    });
+</script>
+</body>
+</html>

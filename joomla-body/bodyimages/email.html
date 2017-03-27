@@ -1,0 +1,291 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Terms of Use</title>
+    <script language="JavaScript1.2" type="text/javascript" src="http://www.etnasystems.com/js/eiiscripts.js "></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript">
+        // Activate Placeholders 
+        /*! http://mths.be/placeholder v1.8.5 by @mathias */
+        $(function() {
+            $('input, textarea').placeholder();
+        });
+
+        ;
+        (function(window, document, $) {
+
+            var isInputSupported = 'placeholder' in document.createElement('input'),
+                isTextareaSupported = 'placeholder' in document.createElement('textarea');
+
+            if (isInputSupported && isTextareaSupported) {
+
+                $.fn.placeholder = function() {
+                    return this;
+                };
+
+                $.fn.placeholder.input = $.fn.placeholder.textarea = true;
+
+            } else {
+
+                $.fn.placeholder = function() {
+                    return this.filter((isInputSupported ? 'textarea' : ':input') + '[placeholder]')
+                        .bind('focus.placeholder', clearPlaceholder)
+                        .bind('blur.placeholder', setPlaceholder)
+                        .trigger('blur.placeholder').end();
+                };
+
+                $.fn.placeholder.input = isInputSupported;
+                $.fn.placeholder.textarea = isTextareaSupported;
+
+                $(function() {
+                    // Look for forms
+                    $('form').bind('submit.placeholder', function() {
+                        // Clear the placeholder values so they don't get submitted
+                        var $inputs = $('.placeholder', this).each(clearPlaceholder);
+                        setTimeout(function() {
+                            $inputs.each(setPlaceholder);
+                        }, 10);
+                    });
+                });
+
+                // Clear placeholder values upon page reload
+                $(window).bind('unload.placeholder', function() {
+                    $('.placeholder').val('');
+                });
+
+            }
+
+            function args(elem) {
+                // Return an object of element attributes
+                var newAttrs = {},
+                    rinlinejQuery = /^jQuery\d+$/;
+                $.each(elem.attributes, function(i, attr) {
+                    if (attr.specified && !rinlinejQuery.test(attr.name)) {
+                        newAttrs[attr.name] = attr.value;
+                    }
+                });
+                return newAttrs;
+            }
+
+            function clearPlaceholder() {
+                var $input = $(this);
+                if ($input.val() === $input.attr('placeholder') && $input.hasClass('placeholder')) {
+                    if ($input.data('placeholder-password')) {
+                        $input.hide().next().show().focus().attr('id', $input.removeAttr('id').data('placeholder-id'));
+                    } else {
+                        $input.val('').removeClass('placeholder');
+                    }
+                }
+            }
+
+            function setPlaceholder() {
+                var $replacement,
+                    $input = $(this),
+                    $origInput = $input,
+                    id = this.id;
+                if ($input.val() === '') {
+                    if ($input.is(':password')) {
+                        if (!$input.data('placeholder-textinput')) {
+                            try {
+                                $replacement = $input.clone().attr({
+                                    'type': 'text'
+                                });
+                            } catch (e) {
+                                $replacement = $('<input>').attr($.extend(args(this), {
+                                    'type': 'text'
+                                }));
+                            }
+                            $replacement
+                                .removeAttr('name')
+                                // We could just use the `.data(obj)` syntax here, but that wouldn't work in pre-1.4.3 jQueries
+                                .data('placeholder-password', true)
+                                .data('placeholder-id', id)
+                                .bind('focus.placeholder', clearPlaceholder);
+                            $input
+                                .data('placeholder-textinput', $replacement)
+                                .data('placeholder-id', id)
+                                .before($replacement);
+                        }
+                        $input = $input.removeAttr('id').hide().prev().attr('id', id).show();
+                    }
+                    $input.addClass('placeholder').val($input.attr('placeholder'));
+                } else {
+                    $input.removeClass('placeholder');
+                }
+            }
+
+        }(this, document, jQuery));
+    </script>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+        body {
+            font-size: 12px;
+            line-height: 18px;
+            font-family: 'century gothic', Arial, Helvetica, sans-serif;
+            color: #483d1e;
+            background-color: #C5CE23;
+        }
+        td {
+            vertical-align: middle;
+        }
+        #content h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        #content p {
+            margin: 0 0 8px;
+        }
+        input,
+        select,
+        textarea {
+            font: 12px 'century gothic', Arial, Helvetica, sans-serif;
+            color: #483d1e;
+            outline: none;
+        }
+        input.input {
+            margin: 0 0 10px;
+            border: 1px solid #fff;
+            padding: 4px 5px;
+            width: 458px;
+            background-color: #fff !important;
+            vertical-align: middle;
+        }
+        .placeholder {
+            font: 12px 'century gothic', Arial, Helvetica, sans-serif;
+            color: #483d1e;
+        }
+        ::-webkit-input-placeholder {
+            font: 12px 'century gothic', Arial, Helvetica, sans-serif;
+            color: #483d1e;
+        }
+        :-moz-placeholder {
+            font: 12px 'century gothic', Arial, Helvetica, sans-serif;
+            color: #483d1e;
+        }
+        input.required {
+            border: 1px solid #483d1e;
+        }
+        .validator {
+            width: 100px;
+            height: 24px;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .small {
+            font-size: .7em;
+        }
+        .clear {
+            clear: both;
+        }
+        .required {
+            color: #483d1e;
+        }
+        .warning {
+            margin-bottom: 8px;
+            padding: 5px 10px;
+            background: #483d1e;
+            color: #fff;
+        }
+        #content .warning p {
+            margin: 0;
+        }
+        #content .warning h2 {
+            font-size: 1.0em;
+        }
+        form {
+            font-size: 11px;
+        }
+        .fl {
+            float: left;
+        }
+        .fr {
+            float: right;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="content">
+
+        <p>Enter your email address to receive a copy of your treatment options.</p>
+
+        <form method="post" id="formEmail">
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    var sPageURL = document.URL;
+                    function getUrlVars()
+                    {
+                        var vars = [], hash;
+                        var hashes = sPageURL.slice(window.location.href.indexOf('?') + 1).split('&');
+                        for(var i = 0; i < hashes.length; i++)
+                        {
+                            hash = hashes[i].split('=');
+                            vars.push(hash[0]);
+                            vars[hash[0]] = hash[1];
+                        }
+                        return vars;
+                    }
+                    for (var j = 1 ; j <=20; j++) {
+                        if (getUrlVars()['g'+j] == 'true')  jQuery('#ipg' + j).val(true);
+                    }
+                });
+            </script>
+            
+            <input type="hidden" id="ipg1" name="g1" value="false">
+            <input type="hidden" id="ipg2" name="g2" value="false">
+            <input type="hidden" id="ipg3" name="g3" value="false">
+            <input type="hidden" id="ipg4" name="g4" value="false">
+            <input type="hidden" id="ipg5" name="g5" value="false">
+            <input type="hidden" id="ipg6" name="g6" value="false">
+            <input type="hidden" id="ipg7" name="g7" value="false">
+            <input type="hidden" id="ipg8" name="g8" value="false">
+            <input type="hidden" id="ipg9" name="g9" value="false">
+            <input type="hidden" id="ipg10" name="g10" value="false">
+            <input type="hidden" id="ipg11" name="g11" value="false">
+            <input type="hidden" id="ipg12" name="g12" value="false">
+            <input type="hidden" id="ipg13" name="g13" value="false">
+            <input type="hidden" id="ipg14" name="g14" value="false">
+            <input type="hidden" id="ipg15" name="g15" value="false">
+            <input type="hidden" id="ipg16" name="g16" value="false">
+            <input type="hidden" id="ipg17" name="g17" value="false">
+            <input type="hidden" id="ipg18" name="g18" value="false">
+            <input type="hidden" id="ipg19" name="g19" value="false">
+            <input type="hidden" id="ipg20" name="g20" value="false">
+
+            <table cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="email" class="input " placeholder="Email Address: *" name="email" label="your email" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">
+                            <input name="Submit" type="image" src="button-submit-contact.png" class="fl" alt="Submit">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2"><em>Fields marked with <span class="required"> *</span> are required.</em>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </form>
+
+
+    </div>
+
+</body>
+
+</html>

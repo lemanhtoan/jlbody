@@ -1,0 +1,603 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Your Personal Treatment Planner</title>
+<style type="text/css">
+	* { margin: 0; padding: 0; }
+	body { margin: 0; padding: 0; font-size: 16px; font-family: 'century gothic', Arial, Helvetica, sans-serif; }
+	.clear { clear: both; }
+	#fancybox-wrap { position: absolute; top: 49px !important; }
+	img.title { margin: 0 0 14px; }
+	a img { border: none; vertical-align: top; line-height: 0; font-size: 0; }
+	#treatmentAreas { width: 978px; height: 1465px; background: url(background-female.jpg) no-repeat left top; position: relative; }
+	#gender { height: 69px; }
+	#gender a { width: 100px; display: block; overflow: hidden; float: left; }
+	#gender a:hover, #gender a.on { text-indent: -100px; }
+	#interestNav { padding: 0 0 5px; width: 300px; background: url(interestNav-background.png) no-repeat left bottom; float: left; }
+	#interestNav form { margin: 0 9px 20px; font-size: 16px; line-height: 30px; }
+	#interestNav input { padding: 0; margin: 0 9px 0 0; vertical-align: middle; border: none; border-image-outset: none; outline: 1px solid #000; width: 15px; height: 15px; background-color: #fff; -webkit-appearance: none; -moz-appearance: none; -o-appearance:none; border-top-style: none !important;border-right-style: none !important;border-bottom-style: none !important;border-left-style: none !important; background: url(checkbox-background.gif) no-repeat left bottom; }
+	#interestNav input:checked { -moz-appearance: none; background: url(checkbox-background-checked.gif) no-repeat left bottom; }
+	#treatmentNav { padding: 0 0 40px; width: 300px; background: url(treatmentNav-background.png) no-repeat left bottom; float: right; position: relative; }
+	#treatmentNav ul { font-size: 14px; line-height: 24px; margin: 0 19px 10px; padding: 0; list-style-type: none; }
+	#treatmentNav ul li { padding: 0 0 0 10px; background: url(treatmentNav-li-bullet.png) no-repeat left 9px; display: none; }
+	#treatmentNav ul li a { color: #fff; text-decoration: none; }
+	#treatmentNav a img { position: absolute; right: 0; bottom: 5px; }
+	#treatmentAreas .menu-child { margin: -51px 0 0 -567px; padding: 16px 66px 0 16px; width: 221px; height: 110px; background: url(dropdown-background.png) no-repeat left bottom; font-size: 12px; line-height: 16px; color: #fff; display: block; z-index: 100; visibility: hidden; position: relative; }
+	#treatmentAreas .menu-child:hover { visibility: visible; }
+	#treatmentAreas .menu-child h2 { font-size: 14px; line-height: 16px; margin: 0; color: #cccc66; }
+	#treatmentAreas .menu-child p { margin: 0; }
+	#treatmentAreas .menu-child a.button { position: absolute; top: 101px; left: 123px; width: 129px; overflow: hidden; display: block; }
+	#treatmentAreas .menu-child a.button:hover { text-indent: -129px; }
+	p.link { position: absolute; top: 750px; left: 0; text-align: left; line-height: 16px; }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="dropdown.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery.fancybox-1.3.0.css" media="screen">
+<script src="jquery.fancybox-1.3.0.pack.js"></script>
+</head>
+
+<body>
+	<div id="treatmentAreas" style="background-image: url(&quot;background-male.jpg&quot;);">
+    	<div id="interests">
+        	<img src="interest-aged.png" alt="Aging Skin Treatment" id="agedTreatment" style="position: absolute; left: 481px; top: 7px; display: block;">
+        	<img src="interest-body.png" alt="Body Contouring Treatment" id="bodyTreatment" style="position: absolute; left: 376px; top: 571px; display: block;">
+        	<img src="interest-cheek.png" alt="Cheek and Lip Enhancement" id="cheekTreatment" style="position: absolute; left: 483px; top: 151px; display: block;">
+        	<img src="interest-sweating.png" alt="Excessive Sweating Treatment" id="sweatingTreatment" style="position: absolute; left: 359px; top: 399px; display: none;">
+        	<img src="interest-slimming.png" alt="Face Slimming Treatment" id="slimmingTreatment" style="position: absolute; left: 308px; top: 176px; display: none;">
+        	<img src="interest-contours.png" alt="Facial Contours Treatment" id="contoursTreatment" style="position: absolute; left: 514px; top: 208px; display: none;">
+        	<img src="interest-rejuvenation.png" alt="Facial Skin Rejuvenation Treatment" id="rejuvenationTreatment" style="position: absolute; left: 501px; top: 75px; display: none;">
+        	<img src="interest-volume.png" alt="Facial Volume Loss Treatment" id="volumeTreatment" style="position: absolute; left: 321px; top: 176px; display: none;">
+        	<img src="interest-fat.png" alt="Fat Deposits Treatment" id="fatTreatment" style="position: absolute; left: 368px; top: 613px; display: none;">
+        	<img src="interest-jowls.png" alt="Jowls Treatment" id="jowlsTreatment" style="position: absolute; left: 439px; top: 224px; display: none;">
+        	<img src="interest-acne.png" alt="Large Pores/Acne/Acne Scarring Treatment" id="acneTreatment" style="position: absolute; left: 318px; top: 31px; display: none;">
+        	<img src="interest-hair.png" alt="Laser Hair Removal Treatment" id="hairTreatment" style="position: absolute; left: 414px; top: 354px; display: none;">
+        	<img src="interest-wrinkles.png" alt="Lines and Wrinkles Treatment" id="wrinklesTreatment" style="position: absolute; left: 343px; top: 101px; display: none;">
+        	<img src="interest-lashes.png" alt="Lashes Treatment" id="lashesTreatment" style="position: absolute; left: 516px; top: 142px; display: none;">
+        	<img src="interest-migraines.png" alt="Migraines Treatment" id="migrainesTreatment" style="position: absolute; left: 329px; top: 120px; display: none;">
+        	<img src="interest-rosacea.png" alt="Rosacea Treatment" id="rosaceaTreatment" style="position: absolute; left: 365px; top: 140px; display: none;">
+        	<img src="interest-spider.png" alt="Spider Veins Treatment" id="spiderTreatment" style="position: absolute; left: 434px; top: 863px; display: none;">
+        	<img src="interest-sports.png" alt="Sports Medicine Injuries Treatment" id="sportsTreatment" style="position: absolute; left: 308px; top: 342px; display: block;">
+        	<img src="interest-varicose.png" alt="Varicose Veins Treatment" id="varicoseTreatment" style="position: absolute; left: 461px; top: 902px;">
+        </div>
+    	<div id="gender">
+        	<img src="interestNav-i-am.png" alt="I Am" style="float: left;">
+    		<a id="female" href="#" class=""><img src="button-female.png" alt="Female"></a><a id="male" href="#" class="on"><img src="button-male.png" alt="Male"></a>
+            <div class="clear"></div>
+        </div>
+    	<div id="interestNav">
+        	<img src="interestNav-title.png" alt="Area(s) of Interest" class="title">
+            <form>
+                <input type="checkbox" name="interest" value="aged" id="aged"><label for="aged">aging skin</label><br>
+                <input type="checkbox" name="interest" value="body" id="body"><label for="body">body contouring</label><br>
+                <input type="checkbox" name="interest" value="cheek" id="cheek"><label for="cheek">cheek and lip enhancement</label><br>
+                <input type="checkbox" name="interest" value="sweating" id="sweating"><label for="sweating">excessive sweating</label><br>
+                <input type="checkbox" name="interest" value="slimming" id="slimming"><label for="slimming">face slimming</label><br>
+                <input type="checkbox" name="interest" value="contours" id="contours"><label for="contours">facial contours</label><br>
+                <input type="checkbox" name="interest" value="rejuvenation" id="rejuvenation"><label for="rejuvenation">facial skin rejuvenation</label><br>
+                <input type="checkbox" name="interest" value="volume" id="volume"><label for="volume">facial volume loss</label><br>
+                <input type="checkbox" name="interest" value="fat" id="fat"><label for="fat">fat deposits</label><br>
+                <div class="maleOnly" style="display: block;"><input type="checkbox" name="interest" value="jowls" id="jowls"><label for="jowls">jowls</label><br></div>
+                <input type="checkbox" name="interest" value="acne" id="acne"><label for="acne">large pores/acne/acne scarring</label><br>
+                <input type="checkbox" name="interest" value="hair" id="hair"><label for="hair">laser hair removal</label><br>
+                <input type="checkbox" name="interest" value="wrinkles" id="wrinkles"><label for="wrinkles">lines &amp; wrinkles</label><br>
+                <div class="femaleOnly" style="display: none;"><input type="checkbox" name="interest" value="lashes" id="lashes"><label for="lashes">longer, fuller, darker lashes</label><br></div>
+                <input type="checkbox" name="interest" value="migraines" id="migraines"><label for="migraines">migraines</label><br>
+                <input type="checkbox" name="interest" value="rosacea" id="rosacea"><label for="rosacea">rosacea treatment</label><br>
+                <input type="checkbox" name="interest" value="spider" id="spider"><label for="spider">spider veins</label><br>
+                <input type="checkbox" name="interest" value="sports" id="sports"><label for="sports">sports medicine injuries</label><br>
+                <input type="checkbox" name="interest" value="varicose" id="varicose"><label for="varicose">varicose veins</label><br>
+            </form>
+            <a id="clearForm" href="#"><img src="interestNav-button-clear.png" alt="Clear Form Now"></a>
+        <p class="link">Body by <a href="http://www.fitnessprint.com" target="_blank" style="color: #3499CD;">www.fitnessprint.com</a></p>
+        </div>
+        <div id="treatmentNav" style="display: block;">
+        	<img src="treatmentNav-title.png" alt="Recommended Treatment(s)" class="title">
+        	<ul>
+                <li id="botox" style="display: none;"><a href="#">BOTOX® Cosmetic</a></li>
+                <li id="botox-headaches" style="display: none;"><a href="#">BOTOX® for Headaches</a></li>
+                <li id="botox-hyperhydrosis" style="display: none;"><a href="#">BOTOX® Hyperhydrosis</a></li>
+                <li id="botox-injections" style="display: none;"><a href="#">BOTOX® Injections for Masseter Muscles</a></li>
+                <li id="chemical" style="display: none;"><a href="#">Chemical Peels</a></li>
+                <li id="clearlift" style="display: none;"><a href="#">Clearlift™</a></li>
+                <li id="coolsculpting" style="display: list-item;"><a href="#">CoolSculpting®</a></li>
+                <li id="injectable" style="display: none;"><a href="#">Injectable Spider Vein Treatment</a></li>
+                <li id="intraceuticals" style="display: none;"><a href="#">Intraceuticals O2 Facial</a></li>
+                <li id="juvederm" style="display: list-item;" class=""><a href="#">JUVÉDERM®</a></li>
+                <li id="hair-removal" style="display: none;"><a href="#">Laser Hair Removal</a></li>
+                <li id="latisse" style="display: none;"><a href="#">LATISSE®</a></li>
+                <li id="led" style="display: list-item;"><a href="#">Lightwave LED Therapy &amp; DermaKinetics®</a></li>
+                <li id="lipodissolve" style="display: list-item;"><a href="#">Lipodissolve</a></li>
+                <li id="microdermabrasion" style="display: none;"><a href="#">Microdermabrasion</a></li>
+                <li id="pelleve" style="display: none;"><a href="#">Pellevé®</a></li>
+                <li id="pdt" style="display: list-item;"><a href="#">Photodynamic Therapy (PDT)</a></li>
+                <li id="photorejuvenation" style="display: list-item;"><a href="#">Photorejuvenation/Intense Pulsed Light (IPL)</a></li>
+                <li id="pixel" style="display: none;"><a href="#">Pixel® Laser</a></li>
+                <li id="prp" style="display: list-item;"><a href="#">Platelet Rich Plasma (PRP) Therapy</a></li>
+                <li id="sculptra" style="display: none;"><a href="#">Sculptra®</a></li>
+                <li id="thermage" style="display: none;"><a href="#">Thermage®</a></li>
+                <li id="ultrasound" style="display: list-item;"><a href="#">Ultrasound Guided Foam Treatment</a></li>
+            </ul>
+            <a href="http://facebook.etnainteractive.com/vlc/treatment-planner/treatment-plan.cfm?aged=true&amp;amp;body=true&amp;amp;cheek=true&amp;amp;sweating=false&amp;amp;slimming=false&amp;amp;contours=false&amp;amp;rejuvenation=false&amp;amp;volume=false&amp;amp;fat=false&amp;amp;jowls=false&amp;amp;acne=false&amp;amp;hair=false&amp;amp;wrinkles=false&amp;amp;lashes=false&amp;amp;migraines=false&amp;amp;rosacea=false&amp;amp;spider=false&amp;amp;sports=true&amp;amp;varicose=true" class="fancyplan"><img src="treatmentNav-button-build.png" alt="Build Your Plan" style="float: right;"></a>
+            <div class="clear"></div>
+        </div>
+          
+            <div class="menu-child" id="botox-child" style="position: absolute; visibility: hidden;">
+                <h2>BOTOX® Cosmetic</h2>
+                <p>An injectable purified protein, BOTOX® Cosmetic relaxes muscles in the face that have contracted and, as a result, formed wrinkles.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/botox-injections/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="botox-headaches-child" style="position: absolute; visibility: hidden;">
+                <h2>BOTOX® for Headaches</h2>
+                <p>Injections of this purified protein ease discomfort such as headaches and soft-tissue pain. BOTOX® halts pain-causing nerve impulses for immediate relief.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/botox-for-headaches/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="botox-hyperhydrosis-child" style="position: absolute; visibility: hidden;">
+                <h2>BOTOX® Hyperhydrosis</h2>
+                <p>Purified-protein injections can stop excessive sweating at the injection sites, such as armpits, for several months at a time.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/botox-for-hyperhidrosis/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="botox-injections-child" style="position: absolute; visibility: hidden;">
+                <h2>BOTOX® Injections for Masseter Muscles</h2>
+                <p>Contracted jaw muscles can create an excessively wide face. This treatment relaxes the muscles, slimming the face.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/botox-injections/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="chemical-child" style="position: absolute; visibility: hidden;">
+                <h2>Chemical Peels</h2>
+                <p>Using a specially formulated mixture of chemicals, this treatment removes damaged top layers of skin, exposing the youthful skin beneath.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/cosmeceutical-skin-care/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="clearlift-child" style="position: absolute; visibility: hidden;">
+                <h2>Clearlift™</h2>
+                <p>By applying short laser pulses, this treatment promotes collagen production and improves sun-damaged skin, hyperpigmentation and enlarged pores.</p>
+            </div>
+            <div class="menu-child" id="coolsculpting-child" style="position: absolute; visibility: hidden;">
+                <h2>CoolSculpting®</h2>
+                <p>A non-surgical liposuction alternative, CoolSculpting® freezes targeted fat cells so the body can remove them naturally through metabolism.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/coolsculpting-by-zeltiq/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="injectable-child" style="position: absolute; visibility: hidden;">
+                <h2>Injectable Spider Vein Treatment</h2>
+                <p>This treatment collapses painful and unattractive spider veins, eliminating discomfort and rendering them invisible through the skin.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/spider-varicose-vein-treatments/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="intraceuticals-child" style="position: absolute; visibility: hidden;">
+                <h2>Intraceuticals O2 Facial</h2>
+                <p>Intraceuticals O2 rejuvenates, hydrates and relaxes the complexion, adding luster and improving sun-damaged and wrinkled skin.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/intraceuticals-o2-facials/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="juvederm-child" style="position: absolute; visibility: hidden; top: 146px; left: 961px;">
+                <h2>JUVÉDERM®</h2>
+                <p>This injectable filler improves the appearance of facial skin by reducing fine lines and wrinkles while adding volume.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/juvederm/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="hair-removal-child" style="position: absolute; visibility: hidden;">
+                <h2>Laser Hair Removal</h2>
+                <p>Remove unwanted body hair with this treatment, which focuses a concentrated beam of light to inhibit growth at the follicle.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/laser-hair-removal/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="latisse-child" style="position: absolute; visibility: hidden;">
+                <h2>LATISSE®</h2>
+                <p>LATISSE® is a prescription topical treatment that is clinically proven to grow darker, fuller eyelashes when applied daily.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/latisse/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="led-child" style="position: absolute; visibility: hidden;">
+                <h2>Lightwave LED Therapy &amp; DermaKinetics®</h2>
+                <p>These light-therapy treatments promote cellular renewal and collagen production, resulting in fresher skin. </p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/lightwave-led-therapy-and-dermakinetics/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="lipodissolve-child" style="position: absolute; visibility: hidden;">
+                <h2>Lipodissolve</h2>
+                <p>This treatment, a non-surgical alternative to liposuction, consists of fat-dissolving injections into cellulite and other fat cells.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/lipodissolve-mesotherapy/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="microdermabrasion-child" style="position: absolute; visibility: hidden;">
+                <h2>Microdermabrasion</h2>
+                <p>Minimize fine lines and imperfections such as acne, pigmentation and rough patches with this polishing and exfoliating treatment.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/microdermabrasion/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="pelleve-child" style="position: absolute; visibility: hidden;">
+                <h2>Pellevé®</h2>
+                <p>The radiofrequency energy and heat applied by this non-invasive rejuvenating treatment results in smoother, more youthful skin.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/pelleve/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="pdt-child" style="position: absolute; visibility: hidden;">
+                <h2>Photodynamic Therapy (PDT)</h2>
+                <p>Skin cancer sufferers and frequent sunbathers can benefit from this light-activation remedy for sun damage, enlarged pores and acne.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/photodynamic-therapy/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="photorejuvenation-child" style="padding-right: 56px; width: 231px; position: absolute; visibility: hidden;">
+                <h2>Photorejuvenation/Intense<br>Pulsed Light (IPL)</h2>
+                <p>This treatment improves rosacea symptoms, broken veins and other irregularities while stimulating collagen production.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/photorejuvenation-ipl/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="pixel-child" style="position: absolute; visibility: hidden;">
+                <h2>Pixel® Laser</h2>
+                <p>Enlarged pores, scars and wrinkles succumb to this mild skin-perforating laser resurfacing treatment. </p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/fractional-laser-skin-resurfacing/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="prp-child" style="position: absolute; visibility: hidden;">
+                <h2>Platelet Rich Plasma (PRP) Therapy</h2>
+                <p>This tissue-recovering therapy heals injuries to muscle, cartilage, tendons or ligaments with the help of your own platelets.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/prp-sports-medicine-orthopedic/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="sculptra-child" style="position: absolute; visibility: hidden;">
+                <h2>Sculptra®</h2>
+                <p>Using polyactic acid, which occurs naturally in the body, Sculptra® improves facial volume while reducing wrinkles and fine lines.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/sculptra/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="thermage-child" style="position: absolute; visibility: hidden;">
+                <h2>Thermage®</h2>
+                <p>Thermage® uses radiofrequency to tighten skin and improve facial contours. It can serve as a non-surgical alternative to surgeries such as brow lifts.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/thermage-skin-tightening/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+            <div class="menu-child" id="ultrasound-child" style="position: absolute; visibility: hidden;">
+                <h2>Ultrasound Guided Foam Treatment</h2>
+                <p>Foam injected into bulging varicose veins contracts and smooths the veins, easing discomfort.</p>
+                <a target="_parent" href="http://www.vancouverlaser.com/procedures-treatments/spider-varicose-vein-treatments/" class="button"><img src="dropdown-button.png" alt="More Info"></a>
+            </div>
+        <div class="clear"></div>
+    </div>
+    
+    
+    <script>
+		
+		at_attach("botox", "botox-child", "hover", "x", "hand");
+		at_attach("botox-headaches", "botox-headaches-child", "hover", "x", "hand");
+		at_attach("botox-hyperhydrosis", "botox-hyperhydrosis-child", "hover", "x", "hand");
+		at_attach("botox-injections", "botox-injections-child", "hover", "x", "hand");
+		at_attach("chemical", "chemical-child", "hover", "x", "hand");
+		at_attach("coolsculpting", "coolsculpting-child", "hover", "x", "hand");
+		at_attach("clearlift", "clearlift-child", "hover", "x", "hand");
+		at_attach("injectable", "injectable-child", "hover", "x", "hand");
+		at_attach("intraceuticals", "intraceuticals-child", "hover", "x", "hand");
+		at_attach("juvederm", "juvederm-child", "hover", "x", "hand");
+		at_attach("hair-removal", "hair-removal-child", "hover", "x", "hand");
+		at_attach("latisse", "latisse-child", "hover", "x", "hand");
+		at_attach("led", "led-child", "hover", "x", "hand");
+		at_attach("lipodissolve", "lipodissolve-child", "hover", "x", "hand");
+		at_attach("microdermabrasion", "microdermabrasion-child", "hover", "x", "hand");
+		at_attach("pelleve", "pelleve-child", "hover", "x", "hand");
+		at_attach("pdt", "pdt-child", "hover", "x", "hand");
+		at_attach("photorejuvenation", "photorejuvenation-child", "hover", "x", "hand");
+		at_attach("pixel", "pixel-child", "hover", "x", "hand");
+		at_attach("prp", "prp-child", "hover", "x", "hand");
+		at_attach("sculptra", "sculptra-child", "hover", "x", "hand");
+		at_attach("thermage", "thermage-child", "hover", "x", "hand");
+		at_attach("ultrasound", "ultrasound-child", "hover", "x", "hand");
+
+	
+			
+			$(document).ready(function() {
+						
+			$('input[name="interest"]').change( function(){
+				var base_url = 'http://facebook.etnainteractive.com/vlc/treatment-planner/treatment-plan.cfm';
+				var interests = [];
+				$('input[name="interest"]').each( function() {
+					var n = $( this ).attr( 'id' );
+					var c = $( this ).prop( 'checked' );
+					interests.push( n + '=' + c );
+				});
+				var qstring = '?' + interests.join( '&amp;' );
+				var url = base_url + qstring;
+				$('.fancyplan').attr( 'href', url );
+			});
+				
+			$("a.fancyplan").fancybox({
+					'autoScale'     	: false,
+					'overlayOpacity'	: 0.5,
+					'overlayColor'		: '#fff',
+					'transitionIn'		: 'fade',
+					'transitionOut'		: 'fade',
+					'type'					: 'iframe',
+					'titleShow'			: false,
+					'width'				: 858,
+					'height'				: 500,
+					'opacity'				: true,
+					'padding'			: 0
+			});
+			
+			$('.maleOnly').hide();
+			function changeBackgroundMale() {
+				$('#male').addClass("on");
+				$('#female').removeClass("on");
+				$('.femaleOnly').hide();
+				$('.maleOnly').show();
+				$('#lashes').attr('checked', false);
+				$('#treatmentAreas').css("background-image", "url(background-male.jpg)");	
+				$('#agedTreatment').css("top", "7px").css("left", "481px");	
+				$('#bodyTreatment').css("top", "571px").css("left", "376px");	
+				$('#cheekTreatment').css("top", "151px").css("left", "483px");	
+				$('#sweatingTreatment').css("top", "399px").css("left", "359px");	
+				$('#slimmingTreatment').css("top", "176px").css("left", "308px");	
+				$('#contoursTreatment').css("top", "208px").css("left", "514px");	
+				$('#rejuvenationTreatment').css("top", "75px").css("left", "501px");	
+				$('#volumeTreatment').css("top", "176px").css("left", "321px");	
+				$('#fatTreatment').css("top", "613px").css("left", "368px");	
+				$('#acneTreatment').css("top", "31px").css("left", "318px");	
+				$('#hairTreatment').css("top", "354px").css("left", "414px");	
+				$('#lashesTreatment').hide();	
+				$('#wrinklesTreatment').css("top", "101px").css("left", "343px");	
+				$('#migrainesTreatment').css("top", "120px").css("left", "329px");	
+				$('#rosaceaTreatment').css("top", "140px").css("left", "365px");	
+				$('#spiderTreatment').css("top", "863px").css("left", "434px");	
+				$('#sportsTreatment').css("top", "342px").css("left", "308px");	
+				$('#varicoseTreatment').css("top", "902px").css("left", "461px");	
+			}
+			function changeBackgroundFemale() {
+				$('#female').addClass("on");
+				$('#male').removeClass("on");
+				$('.femaleOnly').show();
+				$('.maleOnly').hide();
+				$('#jowls').attr('checked', false);
+				$('#treatmentAreas').css("background-image", "url(background-female.jpg)");	
+				$('#agedTreatment').css("top", "31px").css("left", "471px");	
+				$('#bodyTreatment').css("top", "552px").css("left", "386px");	
+				$('#cheekTreatment').css("top", "178px").css("left", "488px");	
+				$('#sweatingTreatment').css("top", "385px").css("left", "360px");	
+				$('#slimmingTreatment').css("top", "192px").css("left", "308px");	
+				$('#contoursTreatment').css("top", "219px").css("left", "512px");	
+				$('#rejuvenationTreatment').css("top", "99px").css("left", "498px");	
+				$('#volumeTreatment').css("top", "192px").css("left", "321px");	
+				$('#fatTreatment').css("top", "598px").css("left", "354px");	
+				$('#jowlsTreatment').hide();	
+				$('#acneTreatment').css("top", "55px").css("left", "315px");	
+				$('#hairTreatment').css("top", "192px").css("left", "321px");	
+				$('#wrinklesTreatment').css("top", "125px").css("left", "340px");	
+				$('#lashesTreatment').css("top", "142px").css("left", "516px");	
+				$('#migrainesTreatment').css("top", "142px").css("left", "329px");	
+				$('#rosaceaTreatment').css("top", "163px").css("left", "360px");	
+				$('#spiderTreatment').css("top", "827px").css("left", "462px");	
+				$('#sportsTreatment').css("top", "313px").css("left", "335px");	
+				$('#varicoseTreatment').css("top", "789px").css("left", "402px");	
+			}
+			$("#male").click(changeBackgroundMale).click(countChecked);
+			$("#female").click(changeBackgroundFemale).click(countChecked);
+			
+			$("#clearForm").click(clearForm);
+			function clearForm() {
+				$(':checkbox').attr('checked', false);
+				countChecked();
+			}
+			
+			function countChecked() {
+				$('ul li').hide();
+				$('#treatmentNav').hide();
+				if ($('#aged').attr('checked') == "checked") {
+					if ($('#agedTreatment').css('display') == 'none') {
+						$('#agedTreatment').fadeIn();
+					}
+					$('#led').show();
+					$('#pdt').show();
+					$('#photorejuvenation').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#agedTreatment').fadeOut();
+				}
+			
+				if ($('#body').attr('checked') == "checked") {
+					if ($('#bodyTreatment').css('display') == 'none') {
+						$('#bodyTreatment').fadeIn();
+					}
+					$('#coolsculpting').show();
+					$('#lipodissolve').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#bodyTreatment').fadeOut();
+				}
+				
+				if ($('#cheek').attr('checked') == "checked") {
+					if ($('#cheekTreatment').css('display') == 'none') {
+						$('#cheekTreatment').fadeIn();
+					}
+					$('#juvederm').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#cheekTreatment').fadeOut();
+				}
+				
+				if ($('#sweating').attr('checked') == "checked") {
+					if ($('#sweatingTreatment').css('display') == 'none') {
+						$('#sweatingTreatment').fadeIn();
+					}
+					$('#botox-hyperhydrosis').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#sweatingTreatment').fadeOut();
+				}
+				
+				if ($('#contours').attr('checked') == "checked") {
+					if ($('#contoursTreatment').css('display') == 'none') {
+						$('#contoursTreatment').fadeIn();
+					}
+					$('#botox').show();
+					$('#pelleve').show();
+					$('#sculptra').show();
+					$('#thermage').show();
+					$('#juvederm').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#contoursTreatment').fadeOut();
+				}
+				
+				if ($('#rejuvenation').attr('checked') == "checked") {
+					if ($('#rejuvenationTreatment').css('display') == 'none') {
+						$('#rejuvenationTreatment').fadeIn();
+					}
+					$('#chemical').show();
+					$('#clearlift').show();
+					$('#intraceuticals').show();
+					$('#led').show();
+					$('#microdermabrasion').show();
+					$('#pdt').show();
+					$('#photorejuvenation').show();
+					$('#pixel').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#rejuvenationTreatment').fadeOut();
+				}
+
+				if ($('#volume').attr('checked') == "checked") {
+					if ($('#volumeTreatment').css('display') == 'none') {
+						$('#volumeTreatment').fadeIn();
+					}
+					$('#sculptra').show();
+					$('#juvederm').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#volumeTreatment').fadeOut();
+				}
+
+				if ($('#fat').attr('checked') == "checked") {
+					if ($('#fatTreatment').css('display') == 'none') {
+						$('#fatTreatment').fadeIn();
+					}
+					$('#coolsculpting').show();
+					$('#lipodissolve').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#fatTreatment').fadeOut();
+				}
+
+				if ($('#jowls').attr('checked') == "checked") {
+					if ($('#jowlsTreatment').css('display') == 'none') {
+						$('#jowlsTreatment').fadeIn();
+					}
+					$('#lipodissolve').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#jowlsTreatment').fadeOut();
+				}
+
+				if ($('#hair').attr('checked') == "checked") {
+					if ($('#hairTreatment').css('display') == 'none') {
+						$('#hairTreatment').fadeIn();
+					}
+					$('#hair-removal').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#hairTreatment').fadeOut();
+				}
+
+				if ($('#wrinkles').attr('checked') == "checked") {
+					if ($('#wrinklesTreatment').css('display') == 'none') {
+						$('#wrinklesTreatment').fadeIn();
+					}
+					$('#botox').show();
+					$('#juvederm').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#wrinklesTreatment').fadeOut();
+				}
+
+				if ($('#migraines').attr('checked') == "checked") {
+					if ($('#migrainesTreatment').css('display') == 'none') {
+						$('#migrainesTreatment').fadeIn();
+					}
+					$('#botox-headaches').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#migrainesTreatment').fadeOut();
+				}
+
+				if ($('#rosacea').attr('checked') == "checked") {
+					if ($('#rosaceaTreatment').css('display') == 'none') {
+						$('#rosaceaTreatment').fadeIn();
+					}
+					$('#led').show();
+					$('#photorejuvenation').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#rosaceaTreatment').fadeOut();
+				}
+
+				if ($('#spider').attr('checked') == "checked") {
+					if ($('#spiderTreatment').css('display') == 'none') {
+						$('#spiderTreatment').fadeIn();
+					}
+					$('#injectable').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#spiderTreatment').fadeOut();
+				}
+
+				if ($('#slimming').attr('checked') == "checked") {
+					if ($('#slimmingTreatment').css('display') == 'none') {
+						$('#slimmingTreatment').fadeIn();
+					}
+					$('#botox-injections').show();
+					$('#lipodissolve').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#slimmingTreatment').fadeOut();
+				}
+
+				if ($('#lashes').attr('checked') == "checked") {
+					if ($('#lashesTreatment').css('display') == 'none') {
+						$('#lashesTreatment').fadeIn();
+					}
+					$('#latisse').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#lashesTreatment').fadeOut();
+				}
+
+				if ($('#varicose').attr('checked') == "checked") {
+					if ($('#varicoseTreatment').css('display') == 'none') {
+						$('#varicoseTreatment').fadeIn();
+					}
+					$('#ultrasound').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#varicoseTreatment').fadeOut();
+				}
+
+				if ($('#sports').attr('checked') == "checked") {
+					if ($('#sportsTreatment').css('display') == 'none') {
+						$('#sportsTreatment').fadeIn();
+					}
+					$('#prp').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#sportsTreatment').fadeOut();
+				}
+
+				if ($('#acne').attr('checked') == "checked") {
+					if ($('#acneTreatment').css('display') == 'none') {
+						$('#acneTreatment').fadeIn();
+					}
+					$('#chemical').show();
+					$('#clearlift').show();
+					$('#microdermabrasion').show();
+					$('#pixel').show();
+					$('#juvederm').show();
+					$('#treatmentNav').show();
+				}
+				else {
+					$('#acneTreatment').fadeOut();
+				}
+			}
+			countChecked();
+			$(":checkbox").click(countChecked);
+		});
+	</script>
+
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancy-bg" id="fancy-bg-n"></div><div class="fancy-bg" id="fancy-bg-ne"></div><div class="fancy-bg" id="fancy-bg-e"></div><div class="fancy-bg" id="fancy-bg-se"></div><div class="fancy-bg" id="fancy-bg-s"></div><div class="fancy-bg" id="fancy-bg-sw"></div><div class="fancy-bg" id="fancy-bg-w"></div><div class="fancy-bg" id="fancy-bg-nw"></div><div id="fancybox-inner"></div><a id="fancybox-close"></a><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div></body></html>

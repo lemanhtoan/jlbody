@@ -1,0 +1,94 @@
+<?php 
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_INSTANTSEARCH
+ * @copyright  Copyright (c) 2012 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+?>
+<?php
+/** @var $this Itoris_InstantSearch_Block_Suggestions */
+/** @var $itorisHelper Itoris_InstantSearch_Helper_Search */
+$itorisHelper = Mage::helper('itoris_instantsearch/search');
+$settings = $itorisHelper->getSettings();
+?>
+<input type="text" id="itoris_instantsearch_autocomplete" disabled="disabled" style="display: none;"/>
+<div id="itoris_instantsearch_loader" style="display:none;"></div>
+<?php $categoriesOptions = $this->getCategories() ?>
+<?php if (count($categoriesOptions)): ?>
+<div id="itoris_instantsearch_categories" style="display: none;">
+	<select id="itoris_instantsearch_categories_dropdown">
+		<?php foreach ($categoriesOptions as $option): ?>
+			<option value="<?php echo $option['value'] ?>"><?php echo $option['label'] ?></option>
+		<?php endforeach; ?>
+	</select>
+	<div id="itoris_instantsearch_categories_filter"><?php echo $this->__('All Categories') ?></div>
+</div>
+<?php endif; ?>
+<div id="itoris_instantsearch" style="display:none;width:<?php echo $settings->getBarWidth() ?>px">
+	<div class="itoris_instantsearch_mask" style="display: none;"></div>
+	<div id="itoris_instantsearch_box_withscroll">
+		<div class="itoris_instantsearch_box">
+			<div class="itoris_instantsearch_close"></div>
+			<ul class="itoris_instantsearch_suggestions">
+				<li class="itoris_instantsearch_keywords"><div class="itoris_instantsearch_suggestion"></div></li>
+				<li class="itoris_instantsearch_products"><div><span class="itoris_instantsearch_type_title"><?php echo $this->__('Products') ?><span class="itoris_instantsearch_type_title_mode" style="display: none;">(<span><?php echo $this->__('show all') ?></span>)</span></span></div><div class="itoris_instantsearch_suggestion"></div></li>
+				<li class="itoris_instantsearch_categories"><div><span class="itoris_instantsearch_type_title"><?php echo $this->__('Categories') ?></div><div class="itoris_instantsearch_suggestion"></div></li>
+				<li class="itoris_instantsearch_articles"><div><span class="itoris_instantsearch_type_title"><?php echo $this->__('Articles') ?><span class="itoris_instantsearch_type_title_mode" style="display: none;">(<span><?php echo $this->__('show all') ?></span>)</span></div><div class="itoris_instantsearch_suggestion"></div></li>
+			</ul>
+		</div>
+	</div>
+	<div class="itoris_instantsearch_shadow itoris_instantsearch_shadow_right_top"></div>
+	<div class="itoris_instantsearch_shadow itoris_instantsearch_shadow_right"></div>
+	<div class="itoris_instantsearch_shadow itoris_instantsearch_shadow_bottom_left"></div>
+	<div class="itoris_instantsearch_shadow itoris_instantsearch_shadow_bottom"></div>
+	<div class="itoris_instantsearch_shadow itoris_instantsearch_shadow_bottom_right"></div>
+</div>
+<script type="text/javascript">
+	//<![CDATA[
+	<?php
+		$templates = array(
+			'product'  => '<div class="itoris_instantsearch_product" ><div class="itoris_instantsearch_image_box" ' . ($settings->getShowProductImage() ? 'style="width:' . $settings->getProductImageSize() . 'px;' : '') . '">
+					' . ($settings->getShowProductImage() ? '<a href="' . Mage::getUrl('catalog/product/view', array('id' => '#{id}')) . '" class="link-product-image"><img src="#{image}" alt="#{name_html}" class="itoris_instantsearch_product_image" width="' . $settings->getProductImageSize() . '" height="' . $settings->getProductImageSize() . '"/></a>' : '')
+					. ($settings->getShowRating() ? '<div class="rating-box"><div class="rating" style="width:#{rating}%"></div></div>' : '')
+					. '</div><div class="itoris_instantsearch_product_info" ' . ($settings->getShowProductImage() ? 'style="margin-left:' . ($settings->getProductImageSize() + 5) . 'px;' : '') .'">
+						<span class="itoris_instantsearch_product_price">#{price}</span>
+						<a href="' . Mage::getUrl('catalog/product/view', array('id' => '#{id}')) . '" class="link-product"><span class="itoris_instantsearch_product_name">#{name}</span></a>
+						<span class="itoris_instantsearch_product_description">#{description}</span>'
+						. ($settings->getShowCartLink() ? '<a class="link-cart" href="' . $this->getAddToCartUrl() . '">' . $this->__('Add to Cart') . '</a>' : '')
+						. ($settings->getShowWishlistLink() ? '<a class="link-wishlist" href="' . $this->getAddToWishlistUrl() . '">' . $this->__('Add to Wishlist') . '</a>' : '')
+						. ($settings->getShowWishlistLink() && $settings->getShowCompareLink() ? '<span class="separator">|</span>' : '')
+						. ($settings->getShowCompareLink() ? '<a class="link-compare" href="' . $this->getAddToCompareUrl() . '">' . $this->__('Add to Compare') . '</a>' : '') .
+					'</div>
+				</div>',
+			'category' => '<span class="itoris_instantsearch_category"><a href="' . Mage::getUrl('catalog/category/view', array('id' => '#{id}')) . '"><span class="itoris_instantsearch_category_name">#{name}</span></a> #{product_qty}</div>',
+			'article'  => '<div class="itoris_instantsearch_article"><a href="' . Mage::getBaseUrl() . '#{identifier}"><span class="itoris_instantsearch_article_name">#{name}</span></a><br/><span class="itoris_instantsearch_article_description">#{description}</span></div>',
+		);
+		$translates = array(
+			'show_all'  => $itorisHelper->__('show all'),
+			'show_less' => $itorisHelper->__('show less'),
+			'more'      => $itorisHelper->__('more'),
+		);
+	?>
+	Event.observe(window, 'load', function() {
+		itorisInstantSearch = new Itoris.InstantSearch('itoris_instantsearch', <?php echo Zend_Json::encode($this->getConfig()) ?>, <?php echo Zend_Json::encode($templates) ?>, <?php echo Zend_Json::encode($translates) ?>);
+	});
+	//]]>
+</script>
